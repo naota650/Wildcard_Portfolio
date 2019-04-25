@@ -85,7 +85,6 @@ def check_url(url):
 
 def main():
     check_argvs()
-    #check_connection()
     site_url = argv[1]
     check_url(site_url)
     #print(html)
