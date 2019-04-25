@@ -33,17 +33,30 @@ def check_argvs():
 def check_connection():
     g = requests.get('http://google.com')
     y = requests.get('http://yahoo.com')
-    if g:
-        print ("Google is online")
-    if y:
-        print ("Yahoo is online")
+    if g and y:
+        print ("internet is connected")
+        return True
     if not g and not y:
         print ("internet down")
+        return False
 
+# Checks website connection of user's choice
+def check_url(url):
+    if check_connection():
+        url_check = requests.get(url)
+        if url_check:
+            print (url + " is online!!")
+        else:
+            print ("%s is down!!" % url)
+    else:
+        print ("internet connection is down")
 
 def main():
     check_argvs()
-    check_connection()
+    #check_connection()
+    site_url = argv[1]
+    print("url is " + site_url)
+    check_url(site_url)
     print(html)
     #print(html.read())
 
